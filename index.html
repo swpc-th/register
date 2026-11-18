@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>แบบคำขอสอบสัมภาษณ์ สวชส.8 (ออนไลน์) - สภาวิชาชีพสังคมสงเคราะห์</title>
+  <meta name="description" content="ระบบรับสมัครสอบสัมภาษณ์ สวชส.8 (ออนไลน์) สภาวิชาชีพสังคมสงเคราะห์">
+  <style>
+    html, body { margin: 0; height: 100%; background: #f0f7ff; font-family: sans-serif; }
+    #app { position: fixed; inset: 0; width: 100%; height: 100%; border: 0; }
+    #loading { position: fixed; inset: 0; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px; color: #0369a1; z-index: 0; }
+    .spin { width: 40px; height: 40px; border: 4px solid #bae6fd; border-top-color: #0369a1;
+      border-radius: 50%; animation: r 1s linear infinite; }
+    @keyframes r { to { transform: rotate(360deg); } }
+    #fallback { font-size: 13px; color: #475569; text-align: center; padding: 0 16px; }
+    #fallback a { color: #0369a1; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div class="spin"></div>
+    <div>กำลังโหลดระบบ...</div>
+    <div id="fallback">หากรอนานเกินไป
+      <a id="direct" href="#" target="_blank" rel="noopener">กดเปิดระบบในหน้าต่างใหม่</a></div>
+  </div>
+
+  <iframe id="app" title="ระบบรับสมัครสอบสัมภาษณ์ สวชส.8"
+    allow="clipboard-write; fullscreen"
+    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  <script>
+    // วาง URL ของ Apps Script Web App (ลงท้าย /exec)
+    var EXEC_URL = 'PUT_YOUR_EXEC_URL_HERE';
+
+    var f = document.getElementById('app');
+    document.getElementById('direct').href = EXEC_URL;
+    f.src = EXEC_URL;
+    f.addEventListener('load', function () {
+      document.getElementById('loading').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
